@@ -17,6 +17,4 @@ RUN apk add --no-cache python3 py3-pip bash \
 
 RUN liquibase --version
 
-RUN AWS --version
-
 ENTRYPOINT ["/bin/sh"]
