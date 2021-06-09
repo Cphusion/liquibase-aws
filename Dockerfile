@@ -11,12 +11,12 @@ RUN mkdir -p /liquibase && \
     curl -L https://github.com/liquibase/liquibase/releases/download/v$LIQUIBASE_VERSION/liquibase-$LIQUIBASE_VERSION.tar.gz | tar xzC /liquibase
 
 RUN curl -L https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.tar.gz  | tar xzC /liquibase/lib
-RUN cp /liquibase/lib/mysql-connector-java-$MYSQL_CONNECTOR_VERSION/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.jar /liquibase/lib
-# RUN curl -L -o /liquibase/lib/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.tar.gz https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.tar.gz  | tar xzC /liquibase/lib
+RUN cp /liquibase/lib/mysql-connector-java-$MYSQL_CONNECTOR_VERSION/mysql-connector-java-$MYSQL_CONNECTOR_VERSION.jar /liquibase/lib && rm -rf /liquibase/lib/mysql-connector-java-$MYSQL_CONNECTOR_VERSION
 
 RUN apk add --no-cache python3 py3-pip bash \
     && pip3 install --upgrade pip  && pip3 install awscli && rm -rf /var/cache/apk/*
 
+RUN apk update && apk add mysql-client
 # RUN liquibase --version
 # WORKDIR /code
 
