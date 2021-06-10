@@ -17,6 +17,9 @@ RUN apk add --no-cache python3 py3-pip bash \
     && pip3 install --upgrade pip  && pip3 install awscli && rm -rf /var/cache/apk/*
 
 RUN apk update && apk add mysql-client
+
+RUN apk update && apk add busybox-extras
+
 # RUN liquibase --version
 # WORKDIR /code
 
