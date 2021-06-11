@@ -1,7 +1,7 @@
 FROM alpine
 
 ENV LIQUIBASE_VERSION 4.3.5
-ENV MYSQL_CONNECTOR_VERSION 8.0.25
+ENV MYSQL_CONNECTOR_VERSION 8.0.21
 
 RUN apk add --update bash tzdata curl openjdk8-jre && rm -rf /var/cache/apk/*
 
